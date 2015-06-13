@@ -14,11 +14,21 @@
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
+	var noteCount=0;
 	addNote = function(note){
 		console.log('Selected note = ' + note.textContent);
+		console.log($('.note-value'));
+		noteLine = $('.note-value');
+		for(i=0;i<noteLine.length;i++){
+			if(noteLine[i].textContent === ''){
+				noteLine[i].textContent = note.textContent;
+				break;
+			}
+		}
 	}
 
 	$(document).ready(function(){
+		//Build note panel
 		console.log($('#notepanel'));
 		octvIndex = -1;
 		noteNum = 0;
@@ -36,31 +46,45 @@
 			$('#notepanel').append(row);
 			console.log(rowIndex);
 		}
+		
+		//Build note sheet table
+		noteSheetRow = "<tr>";
+		for(i=0;i<20;i++){
+			noteSheetRow +='<td>1000</td>';
+		}
+		noteSheetRow += "</tr>";
+		$('#note-sheet').append(noteSheetRow);
+		
+		noteSheetRow = "<tr>";
+		for(i=0;i<20;i++){
+			noteSheetRow +='<td class="note-value"></td>';
+		}
+		noteSheetRow += "</tr>";
+		$('#note-sheet').append(noteSheetRow);
 	});
 </script>
 </head>
 <body>
-	<div>
 	<img alt="" src="http://www.akgitara.ru/sections/guitar_play/images/pianorow.gif">
 	<img alt="" src="http://habrastorage.org/getpro/habr/post_images/ce4/d3d/a97/ce4d3da97b929becb8a0b011becadff1.jpg">
 	<table id="notepanel" border="3"  style="">
-	<tr>
-		<td>Octave</td>
-		<td>Октава</td>
-		<td>C</td>
-		<td>C#</td>
-		<td>D</td>
-		<td>D#</td>
-		<td>E</td>
-		<td>F</td>
-		<td>F#</td>
-		<td>G</td>
-		<td>G#</td>
-		<td>A</td>
-		<td>A#</td>
-		<td>B</td>
-	</tr>
-		</table>
-	</div>
+		<tr>
+			<td>Octave</td>
+			<td>Октава</td>
+			<td>C</td>
+			<td>C#</td>
+			<td>D</td>
+			<td>D#</td>
+			<td>E</td>
+			<td>F</td>
+			<td>F#</td>
+			<td>G</td>
+			<td>G#</td>
+			<td>A</td>
+			<td>A#</td>
+			<td>B</td>
+		</tr>
+	</table>
+	<table border="2" id="note-sheet"></table>
 </body>
 </html>
