@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	table {
+		border-spacing: 0;
+		padding: 0;
+		width: 640px;
+		height: 320px;
+		
+	}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	addNote = function(note){
+		console.log('Selected note = ' + note.textContent);
+	}
+
+	$(document).ready(function(){
+		console.log($('#notepanel'));
+		octvIndex = -1;
+		noteNum = 0;
+		octvName = ['-','Субконтр','Контр','Большая'
+		            ,'Малая','Первая','Вторая','Третья'
+		            ,'Четвёртая', 'Пятая', '-'];
+		for(rowIndex=0;rowIndex<octvName.length;rowIndex++){
+			row = '<tr>'
+				+ '<td>' + octvIndex++ + '</td>'
+				+ '<td>' + octvName[rowIndex] + '</td>';
+			for(i=noteNum;i<=noteNum + 11;i++)
+				row+= '<td onclick=addNote(this)>' + i + '</td>';	
+			noteNum+=12;
+			row+='</tr>';
+			$('#notepanel').append(row);
+			console.log(rowIndex);
+		}
+	});
+</script>
+</head>
+<body>
+	<div>
+	<img alt="" src="http://www.akgitara.ru/sections/guitar_play/images/pianorow.gif">
+	<img alt="" src="http://habrastorage.org/getpro/habr/post_images/ce4/d3d/a97/ce4d3da97b929becb8a0b011becadff1.jpg">
+	<table id="notepanel" border="3"  style="">
+	<tr>
+		<td>Octave</td>
+		<td>Октава</td>
+		<td>C</td>
+		<td>C#</td>
+		<td>D</td>
+		<td>D#</td>
+		<td>E</td>
+		<td>F</td>
+		<td>F#</td>
+		<td>G</td>
+		<td>G#</td>
+		<td>A</td>
+		<td>A#</td>
+		<td>B</td>
+	</tr>
+		</table>
+	</div>
+</body>
+</html>
