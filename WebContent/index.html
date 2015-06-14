@@ -15,18 +15,25 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 	var noteCount=0;
+	var selectedAccord=null;
+	
 	addNote = function(note){
 		console.log('Selected note = ' + note.textContent);
-		console.log($('.note-value'));
-		noteLine = $('.note-value');
-		for(i=0;i<noteLine.length;i++){
-			if(noteLine[i].textContent === ''){
-				noteLine[i].textContent = note.textContent;
-				break;
-			}
-		}
+		console.log(selectedAccord.getElementsByClassName('note-list'));
+		newNote = document.createElement('div');
+		newNote.textContent = note.textContent;
+		selectedAccord.getElementsByClassName('note-list')[0].appendChild(newNote);
 	}
-
+		
+	selectCollumn = function(collumn){
+		console.log('Selected class: ' + collumn.className);
+		console.log(collumn.style.border);
+		if(selectedAccord !== null)
+			selectedAccord.style.border='';
+		selectedAccord = collumn;
+		collumn.style.border = "thick solid #0000FF";
+	}
+	
 	$(document).ready(function(){
 		//Build note panel
 		console.log($('#notepanel'));
@@ -61,6 +68,9 @@
 		}
 		noteSheetRow += "</tr>";
 		$('#note-sheet').append(noteSheetRow);
+		
+		// Select first accord
+		selectCollumn($(".accord")[0]);
 	});
 </script>
 </head>
@@ -85,6 +95,27 @@
 			<td>B</td>
 		</tr>
 	</table>
-	<table border="2" id="note-sheet"></table>
+	<div class="note-sheet">
+		<div class="accord" onclick="selectCollumn(this)" style="float: left; padding-top: 5px; background-color: yellow;">
+			<div class="duratation">
+				<select>
+					<option>1000</option>
+					<option>375</option>
+					<option>187</option>
+				</select>
+			</div>
+			<div class="note-list" style="width: 60px;"></div>
+		</div>
+		<div class="accord" onclick="selectCollumn(this)" style="float: left; padding-top: 5px; background-color: yellow;">
+			<div class="duratation">
+				<select>
+					<option>1000</option>
+					<option>375</option>
+					<option>187</option>
+				</select>
+			</div>
+			<div class="note-list" style="width: 60px;"></div>
+		</div>
+	</div>
 </body>
 </html>
