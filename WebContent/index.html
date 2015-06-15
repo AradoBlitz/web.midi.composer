@@ -53,22 +53,21 @@
 			$('#notepanel').append(row);
 			console.log(rowIndex);
 		}
-		
-		//Build note sheet table
-		noteSheetRow = "<tr>";
-		for(i=0;i<20;i++){
-			noteSheetRow +='<td>1000</td>';
+				
+		//Add collumns to note-sheet
+		for(i=0;i<10;i++){
+			var newAccord = $('<div>');
+			newAccord.addClass('accord');
+			newAccord.css('float','left');
+			newAccord.css('padding-top','5px');
+			newAccord.css('background-color','yellow');
+			newAccord.click(function(){
+				selectCollumn(this);
+			});
+			newAccord.append('<select><option>1000</option><option>375</option><option>187</option></select>');
+			newAccord.append('<div class="note-list" style="width: 60px;"></div>');
+			$('#note-sheet').append(newAccord);
 		}
-		noteSheetRow += "</tr>";
-		$('#note-sheet').append(noteSheetRow);
-		
-		noteSheetRow = "<tr>";
-		for(i=0;i<20;i++){
-			noteSheetRow +='<td class="note-value"></td>';
-		}
-		noteSheetRow += "</tr>";
-		$('#note-sheet').append(noteSheetRow);
-		
 		// Select first accord
 		selectCollumn($(".accord")[0]);
 	});
@@ -95,27 +94,6 @@
 			<td>B</td>
 		</tr>
 	</table>
-	<div class="note-sheet">
-		<div class="accord" onclick="selectCollumn(this)" style="float: left; padding-top: 5px; background-color: yellow;">
-			<div class="duratation">
-				<select>
-					<option>1000</option>
-					<option>375</option>
-					<option>187</option>
-				</select>
-			</div>
-			<div class="note-list" style="width: 60px;"></div>
-		</div>
-		<div class="accord" onclick="selectCollumn(this)" style="float: left; padding-top: 5px; background-color: yellow;">
-			<div class="duratation">
-				<select>
-					<option>1000</option>
-					<option>375</option>
-					<option>187</option>
-				</select>
-			</div>
-			<div class="note-list" style="width: 60px;"></div>
-		</div>
-	</div>
+	<div id="note-sheet"></div>
 </body>
 </html>
