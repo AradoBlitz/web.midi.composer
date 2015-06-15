@@ -20,6 +20,11 @@
 	addNote = function(note){
 		console.log('Selected note = ' + note.textContent);
 		console.log(selectedAccord.getElementsByClassName('note-list'));
+		console.log("Wrapped " + $(selectedAccord).find('.note-list').children().toArray());
+		containedNotes = $(selectedAccord).find('.note-list').children().toArray();
+		for(var i = 0;i<containedNotes.length;i++)
+		  if(containedNotes[i].textContent===note.textContent)
+				return;
 		newNote = document.createElement('div');
 		newNote.textContent = note.textContent;
 		selectedAccord.getElementsByClassName('note-list')[0].appendChild(newNote);
