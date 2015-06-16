@@ -75,6 +75,38 @@
 		}
 		// Select first accord
 		selectCollumn($(".accord")[0]);
+		
+		//init compile form
+		$('#form-compile').submit(function(evt){
+			evt.preventDefault();
+			
+			console.log($('.accord'));
+			accords = $('.accord');
+			accordObjArr = [];
+			$.each(accords,function(index,value){
+			
+				notes = $(value).find('.note-list div');
+				if(notes.length ===0) 
+					return;
+				noteArr = [];
+				$.each(notes,function(index, value){
+					console.log(value.textContent);
+					
+					noteArr.push(value.textContent);
+					console.log(noteArr);
+				});
+				console.log(value);
+				duratation = $(value).find('select option:selected');
+				console.log(duratation.val());
+				
+				accordObj = {};
+				accordObj["duratation"] = duratation.val();
+				accordObj["notes"] = noteArr;
+				console.log(accordObj);
+				accordObjArr.push(accordObj);
+			});
+			console.log(accordObjArr);
+		});
 	});
 </script>
 </head>
@@ -99,6 +131,9 @@
 			<td>B</td>
 		</tr>
 	</table>
-	<div id="note-sheet"></div>
+	<form id="form-compile">
+		<div id="note-sheet"></div>
+		<button id="compile" type="submit">Compile</button>
+	</form>
 </body>
 </html>
