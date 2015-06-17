@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 
 import web.midi.composer.Accord;
 
-@Consumes({MediaType.APPLICATION_JSON})
+
 public interface MidiCompilerService {
 
 	@GET
