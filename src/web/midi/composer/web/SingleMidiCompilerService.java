@@ -16,10 +16,13 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.jboss.logging.Logger;
 
 import web.midi.composer.Accord;
+import web.midi.composer.MidiCompiler;
 
 @ApplicationScoped
 @Path("/")
 public class SingleMidiCompilerService implements MidiCompilerService {
+
+	private byte[] midis;
 
 	@GET
 	@Path("/midi/test_duhast.midi")
@@ -27,7 +30,7 @@ public class SingleMidiCompilerService implements MidiCompilerService {
 	@Override
 	public Response getMidi() {
 		Logger.getLogger(getClass()).info(new File("/home/dmitriy/Projects/Java/portfolio/web.midi.composer/WebContent/midi/test_duhast.midi"));
-		ResponseBuilder response = Response.ok(new File("/home/dmitriy/Projects/Java/portfolio/web.midi.composer/WebContent/midi/test_duhast.midi"));
+		ResponseBuilder response = Response.ok(midis);
 		return response.build();
 	}
 
@@ -36,7 +39,7 @@ public class SingleMidiCompilerService implements MidiCompilerService {
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Override
 	public Response compileMidi(List<Accord> noteSheet) {
-		// TODO Auto-generated method stub
+		midis = new MidiCompiler().process(noteSheet);
 		return null;
 	}
 
