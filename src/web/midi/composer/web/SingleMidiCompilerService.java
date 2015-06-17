@@ -21,7 +21,7 @@ public class SingleMidiCompilerService implements MidiCompilerService {
 	@Path("/midi/test_duhast.midi")
 	@Produces({MediaType.APPLICATION_OCTET_STREAM})
 	@Override
-	public Response compileMidi() {
+	public Response getMidi() {
 		Logger.getLogger(getClass()).info(new File("/home/dmitriy/Projects/Java/portfolio/web.midi.composer/WebContent/midi/test_duhast.midi"));
 		ResponseBuilder response = Response.ok(new File("/home/dmitriy/Projects/Java/portfolio/web.midi.composer/WebContent/midi/test_duhast.midi"));
 		return response.build();

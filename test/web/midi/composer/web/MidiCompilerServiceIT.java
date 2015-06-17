@@ -27,7 +27,7 @@ public class MidiCompilerServiceIT {
 	
 	@Test
 	public void getMidiResponse() throws Exception {
-		Response compileMidi = service.compileMidi();
+		Response compileMidi = service.getMidi();
 		assertNotNull(compileMidi);
 		assertEquals(Response.Status.OK.getStatusCode(), compileMidi.getStatus());
 		assertEquals(75,compileMidi.getLength());

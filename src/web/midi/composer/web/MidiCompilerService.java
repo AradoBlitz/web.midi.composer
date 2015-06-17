@@ -13,6 +13,6 @@ public interface MidiCompilerService {
 	@GET
 	@Path("/midi/test_duhast.midi")
 	@Produces({MediaType.APPLICATION_OCTET_STREAM})
-	Response compileMidi();
+	Response getMidi();
 
 }
