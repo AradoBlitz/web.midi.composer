@@ -101,12 +101,22 @@
 				console.log(duratation.val());
 				
 				accordObj = {};
-				accordObj["duratation"] = duratation.val();
+			//	accordObj["duratation"] = duratation.val();
 				accordObj["notes"] = noteArr;
 				console.log(accordObj);
 				accordObjArr.push(accordObj);
 			});
 			console.log(accordObjArr);
+			
+			$.ajax({
+				type:'POST',
+				url:'service/midi/compile',
+				async: false,
+				contentType: 'application/json',
+				data: JSON.stringify(accordObjArr),
+				success: function(){console.log("Sent to compile.")},
+				error: function(e){console.log(e.message);}
+			});
 		});
 	});
 </script>
