@@ -15,7 +15,7 @@ public class MidiCompilerServiceIT {
 	@Before
 	public void init() throws Exception {
 		service = new ResteasyClientBuilder()
-		.build().target("http://localhost:8080/service")
+		.build().target("http://localhost:8080/web.midi.composer/service")
 		.proxy(MidiCompilerService.class);
 	}
 	
@@ -28,5 +28,6 @@ public class MidiCompilerServiceIT {
 	public void getMidiResponse() throws Exception {
 		Response compileMidi = service.compileMidi();
 		assertNotNull(compileMidi);
+		assertEquals(Response.Status.OK.getStatusCode(), compileMidi.getStatus());
 	}
 }
