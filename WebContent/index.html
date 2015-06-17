@@ -12,6 +12,7 @@
 		
 	}
 </style>
+<script type='text/javascript' src='http://www.midijs.net/lib/midi.js'></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 	var noteCount=0;
@@ -135,5 +136,8 @@
 		<div id="note-sheet"></div>
 		<button id="compile" type="submit">Compile</button>
 	</form>
+	<br>
+	 <a href="#" onClick="MIDIjs.play('midi/test_duhast.midi');">Play hinematov.mid</a>
+
 </body>
 </html>
