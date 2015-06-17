@@ -2,6 +2,7 @@ package web.midi.composer.web;
 
 import static org.junit.Assert.*;
 
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
@@ -29,5 +30,7 @@ public class MidiCompilerServiceIT {
 		Response compileMidi = service.compileMidi();
 		assertNotNull(compileMidi);
 		assertEquals(Response.Status.OK.getStatusCode(), compileMidi.getStatus());
+		assertEquals(75,compileMidi.getLength());
+		assertEquals(MediaType.APPLICATION_OCTET_STREAM_TYPE, compileMidi.getMediaType());
 	}
 }
