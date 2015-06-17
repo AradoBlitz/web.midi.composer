@@ -34,7 +34,7 @@ public class MidiCompiler {
 		Track	track = sequence.createTrack();
 		int tick = 0;
 		for(Accord accord : accords){
-			for(int note:accord.geNotes())
+			for(int note:accord.getNotes())
 				track.add(createNoteOnEvent(note, tick));		
 				tick++;
 			}
