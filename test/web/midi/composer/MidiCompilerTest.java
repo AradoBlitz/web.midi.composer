@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,22 +38,23 @@ public class MidiCompilerTest {
 	@Test
 	public void checkTestFileSize() throws Exception {
 		
-		assertEquals(75, testMidiFile.length());		
-		assertEquals("Result length of byte array should be equal to file length.",75, duhastMidiBytes.length);
+		assertEquals(138, testMidiFile.length());		
+		assertEquals("Result length of byte array should be equal to file length.",138, duhastMidiBytes.length);
 	}
 	
 	@Test
 	public void processNoteSheet() throws Exception {
 		
 		MidiCompiler midiBuilder = new MidiCompiler();
-		List<Accord> noteSheet = Arrays.asList(new Accord(new int[]{64,57})
-										,new Accord(new int[]{62,55})
-										,new Accord(new int[]{59,52})
-										,new Accord(new int[]{59,52})
-										,new Accord(new int[]{64,57})
-										,new Accord(new int[]{62,55})
-										,new Accord(new int[]{59,52})
-										,new Accord(new int[]{59,52}));
+		List<Accord> noteSheet = Arrays.asList(new Accord(2,new int[]{64,57})
+										,new Accord(2,new int[]{62,55})
+										,new Accord(2,new int[]{59,52})
+										,new Accord(2,new int[]{59,52})
+										,new Accord(1,new int[]{64,57})
+										,new Accord(1,new int[]{62,55})
+										,new Accord(2,new int[]{59,52})
+										,new Accord(1,new int[]{59,52}));
+		
 		assertArrayEquals(duhastMidiBytes, midiBuilder.process(noteSheet));
 	}
 }

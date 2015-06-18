@@ -32,14 +32,14 @@ public class MidiCompilerServiceIT {
 	
 	@Test
 	public void getMidiResponse() throws Exception {
-		List<Accord> noteSheet = Arrays.asList(new Accord(new int[]{64,57})
-		,new Accord(new int[]{62,55})
-		,new Accord(new int[]{59,52})
-		,new Accord(new int[]{59,52})
-		,new Accord(new int[]{64,57})
-		,new Accord(new int[]{62,55})
-		,new Accord(new int[]{59,52})
-		,new Accord(new int[]{59,52}));
+		List<Accord> noteSheet = Arrays.asList(new Accord(1,new int[]{64,57})
+		,new Accord(1,new int[]{62,55})
+		,new Accord(1,new int[]{59,52})
+		,new Accord(1,new int[]{59,52})
+		,new Accord(1,new int[]{64,57})
+		,new Accord(1,new int[]{62,55})
+		,new Accord(1,new int[]{59,52})
+		,new Accord(1,new int[]{59,52}));
 		assertEquals(Response.Status.NO_CONTENT,service.compileMidi(noteSheet).getStatusInfo());
 		Response compileMidi = service.getMidi();
 		assertNotNull(compileMidi);

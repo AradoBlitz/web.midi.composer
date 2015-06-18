@@ -36,8 +36,10 @@ public class MidiCompiler {
 		for(Accord accord : accords){
 			for(int note:accord.getNotes())
 				track.add(createNoteOnEvent(note, tick));		
-				tick++;
-			}
+				tick+=accord.getTick();
+			for(int note:accord.getNotes())
+					track.add(createNoteOffEvent(note, tick));	
+		}
 		
 		/* Now we just save the Sequence to the file we specified.
 		   The '0' (second parameter) means saving as SMF type 0.
@@ -57,6 +59,13 @@ public class MidiCompiler {
 		}
 	
 		return baos.toByteArray();
+	}
+
+	private MidiEvent createNoteOffEvent(int note, int tick) {
+		return createNoteEvent(ShortMessage.NOTE_OFF,
+				   note,
+				   0,
+				   tick);
 	}
 
 	private static MidiEvent createNoteOnEvent(int nKey, long lTick)
