@@ -38,16 +38,16 @@ public class MidiCompilerTest {
 	@Test
 	public void checkTestFileSize() throws Exception {
 		
-		assertEquals(138, testMidiFile.length());		
-		assertEquals("Result length of byte array should be equal to file length.",138, duhastMidiBytes.length);
+		assertEquals(140, testMidiFile.length());		
+		assertEquals("Result length of byte array should be equal to file length.",140, duhastMidiBytes.length);
 	}
 	
 	@Test
 	public void processNoteSheet() throws Exception {
 		
 		MidiCompiler midiBuilder = new MidiCompiler();
-		List<Accord> noteSheet = Arrays.asList(new Accord(2,new int[]{64,57})
-										,new Accord(2,new int[]{62,55})
+		List<Accord> noteSheet = Arrays.asList(new Accord(32,new int[]{64,57})
+										,new Accord(32,new int[]{62,55})
 										,new Accord(2,new int[]{59,52})
 										,new Accord(2,new int[]{59,52})
 										,new Accord(1,new int[]{64,57})
