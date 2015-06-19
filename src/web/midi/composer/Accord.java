@@ -3,22 +3,22 @@ package web.midi.composer;
 public class Accord {
 
 	private int[] notes;
-	private int tick;
+	private int duratation;
 
 	public Accord(){}
 	
 	public Accord(int tick,int[] notes) {
 		this.notes = notes;
-		this.tick = tick;
+		this.duratation = tick;
 		 
 	}	
 	
-	public int getTick() {
-		return tick;
+	public int getDuratation() {
+		return duratation;
 	}
 
-	public void setTick(int tick) {
-		this.tick = tick;
+	public void setDuratation(int tick) {
+		this.duratation = tick;
 	}
 
 	public int[] getNotes() {

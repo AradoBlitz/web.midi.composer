@@ -70,7 +70,15 @@
 			newAccord.click(function(){
 				selectCollumn(this);
 			});
-			newAccord.append('<select><option>1000</option><option>375</option><option>187</option></select>');
+			duratation = '<select>' 
+				 + '<option value="32">0</option>'
+				 + '<option value="16">0|</option>'
+				 + '<option value="8">8|</option>'
+				 + '<option value="4">8|-</option>'
+				 + '<option value="2">8|--</option>'
+				 + '<option value="1">8|---</option>'
+				 + '</select>';
+			newAccord.append(duratation);
 			newAccord.append('<div class="note-list" style="width: 60px;"></div>');
 			$('#note-sheet').append(newAccord);
 		}
@@ -101,7 +109,7 @@
 				console.log(duratation.val());
 				
 				accordObj = {};
-			//	accordObj["duratation"] = duratation.val();
+				accordObj["duratation"] = duratation.val();
 				accordObj["notes"] = noteArr;
 				console.log(accordObj);
 				accordObjArr.push(accordObj);
@@ -128,18 +136,18 @@
 		<tr>
 			<td>Octave</td>
 			<td>Октава</td>
-			<td>C</td>
+			<td>C до</td>
 			<td>C#</td>
-			<td>D</td>
+			<td>D ре</td>
 			<td>D#</td>
-			<td>E</td>
-			<td>F</td>
+			<td>E ми</td>
+			<td>F фа</td>
 			<td>F#</td>
-			<td>G</td>
+			<td>G соль</td>
 			<td>G#</td>
-			<td>A</td>
+			<td>A ля</td>
 			<td>A#</td>
-			<td>B</td>
+			<td>B си</td>
 		</tr>
 	</table>
 	<form id="form-compile">

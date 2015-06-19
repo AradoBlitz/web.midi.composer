@@ -36,7 +36,7 @@ public class MidiCompiler {
 		for(Accord accord : accords){
 			for(int note:accord.getNotes())
 				track.add(createNoteOnEvent(note, tick));		
-				tick+=accord.getTick()*5;
+				tick+=accord.getDuratation()*5;
 			for(int note:accord.getNotes())
 					track.add(createNoteOffEvent(note, tick));	
 		}
