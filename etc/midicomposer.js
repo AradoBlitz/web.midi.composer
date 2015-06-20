@@ -14,6 +14,7 @@ casper.test.begin("Page should code table and note sheet.", function(test){
 		test.assertExists('#notepanel');
 		test.assertExists('#note-sheet');
 		test.assertExists('#compile');
+		test.assertSelectorHasText('a','Play hinematov.mid');
 	}).run(function(){
 		test.done();
 	});
